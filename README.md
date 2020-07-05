@@ -1,2 +1,2 @@
 # BOJ
-Baekjoon Online Judge
+Baekjoon Online 문제풀이
