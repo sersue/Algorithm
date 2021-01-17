@@ -41,3 +41,11 @@ public class queue_2161 {
 
     
 }
+/* 풀이
+    큐를 이용해 해결했다
+    가장 위에 값 제거 -poll
+    그 다음으로 위에 값 제거후 삽입 -offer
+    while (isnotEmpty)
+        if(Empty)
+            break;
+ */
