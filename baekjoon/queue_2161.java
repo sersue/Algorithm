@@ -16,14 +16,13 @@ public class queue_2161 {
             number.offer(i);//1,2,3,4
         }
       
-
+        int a,b =0;
        
         while(!number.isEmpty()){
-            int a,b;
+            
 
             b = number.poll();
 
-            System.out.print(b+" ");
 
             if(number.isEmpty()){
                 break;
@@ -35,6 +34,8 @@ public class queue_2161 {
            
 
         }
+        System.out.print(b+" ");
+
 
     }
     
