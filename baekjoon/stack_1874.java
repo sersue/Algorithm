@@ -11,8 +11,7 @@ public class stack_1874 {
         int [] array = new int[N];
         Stack <Integer>stack = new Stack<Integer>();
         int j=0;
-        
-     
+  
             for(int i=0;i<N;i++){
                 array[i] = Integer.parseInt(br.readLine());
             }
