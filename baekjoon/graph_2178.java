@@ -31,6 +31,7 @@ public class graph_2178 {
             }
         }
         Maze(0,0);
+        System.out.println(path);
 
 
     
@@ -38,17 +39,21 @@ public class graph_2178 {
 
     static void Maze(int x, int y){
 
-        visited[x][y]=true;  
+        visited[x][y]=true;
+
         if(x == N&y==M){
             return;
         }
-        if(){
-            for(int i=0;i<=1;i++){
-                for(int j=0;j<=1;j++){
-                    if(maze[x+i][y+j]==1&visited[x+i][y+j]==false){
-                        Maze(x+i,y+i);
-                    }
+
+        for(int i=x;i<M;i++){//0
+            for(int j=y;j<N;j++){//0,1,2,3
+                
+                if(maze[j][i]==1 & visited[j][i]==false){
+                    path++;
+                    Maze(j,i);
+                    
                 }
+                
             }
         }
         
