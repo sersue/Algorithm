@@ -1,61 +1,91 @@
-import java.io.BufferedReader;
-import java.io.*;
 import java.util.*;
 
 public class graph_2178 {
-    static BufferedReader br;
-    static BufferedWriter bw ;
-    static char [][] maze;
+    
+    static int [][] maze;
     static boolean [][] visited;
-    static int N,M;
-    static int path;
-    public static void main(String args[]) throws IOException{
 
-        br = new BufferedReader(new InputStreamReader(System.in));
-        bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    static int N,M;
+
+    static int [] dx = {-1,0,1,0};
+    static int [] dy = {0,-1,0,1};
+    public static void main(String args[]) {
+
         Scanner sc = new Scanner(System.in);
 
-        String str = br.readLine();
-        StringTokenizer st = new StringTokenizer(str);
-
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
-
-        maze = new char[N][M];
+        N = sc.nextInt();
+        M = sc.nextInt();
+        sc.nextLine();
+        maze = new int[N][M];
         visited = new boolean[N][M];
-    
+
         for(int i=0;i<N;i++){
-            String arrNum = br.readLine();
-            for(int j=0;j<M;j++){ 
-                maze[i][j]=arrNum.charAt(j);
+            String str = sc.nextLine();
+            for(int j=0;j<M;j++){
+                maze[i][j]=str.charAt(j)-'0';
+                visited[i][j]=false;
             }
         }
-        Maze(0,0);
-        System.out.println(path);
+        visited[0][0]=true;
+        BFS(0,0);
+        System.out.println(maze[N-1][M-1]);
 
+        // for(int i=0;i<N;i++){
+        //     for(int j=0;j<M;j++){
+        //         System.out.print(maze[i][j]);
 
-    
+        //     }
+        //     System.out.println();
+        // }
+   
+
     }
 
-    static void Maze(int x, int y){
+    public static void BFS(int x, int y){
+        Queue<Dot> queue = new LinkedList<Dot>();
+        queue.add(new Dot(x,y));
 
-        visited[x][y]=true;
+        while(!queue.isEmpty()){
 
-        if(x == N&y==M){
-            return;
-        }
+            Dot d = queue.poll();
+            for(int i=0;i<4;i++){
 
-        for(int i=x;i<M;i++){//0
-            for(int j=y;j<N;j++){//0,1,2,3
-                
-                if(maze[j][i]==1 & visited[j][i]==false){
-                    path++;
-                    Maze(j,i);
-                    
+                int nextX = d.x+dx[i];
+                int nextY = d.y+dy[i];
+                // System.out.println(nextX);
+                // System.out.println(nextY);
+
+                if(nextX<0||nextY<0||nextX>=N||nextY>=M){
+                    continue;
                 }
-                
+                if(visited[nextX][nextY] || maze[nextX][nextY]==0){
+                    continue;
+                }
+               
+
+                queue.add(new Dot(nextX, nextY));
+                maze[nextX][nextY] = maze[d.x][d.y]+1;
+                // System.out.println("hi"+maze[nextX][nextY]);
+
+                visited[nextX][nextY]=true;
             }
         }
-        
     }
+  
+    
+        
 }
+  
+class Dot{
+
+    int x;
+    int y;
+
+    Dot(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+    
+}
+
+
