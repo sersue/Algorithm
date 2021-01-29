@@ -6,7 +6,7 @@ public class graph_2178 {
     static boolean [][] visited;
 
     static int N,M;
-
+    static int result =1;
     static int [] dx = {-1,0,1,0};
     static int [] dy = {0,-1,0,1};
     public static void main(String args[]) {
@@ -29,6 +29,9 @@ public class graph_2178 {
         visited[0][0]=true;
         BFS(0,0);
         System.out.println(maze[N-1][M-1]);
+     
+        // DFS(0,0,result);
+        // System.out.println(result);
 
         // for(int i=0;i<N;i++){
         //     for(int j=0;j<M;j++){
@@ -71,6 +74,34 @@ public class graph_2178 {
             }
         }
     }
+
+    // public static void DFS(int x,int y,int result){
+    //     visited[x][y]=true;
+
+    //     //break point
+    //     if(x==N&&y==M){
+    //         return;
+    //     }
+    //     //위
+    //     if(x>0&&maze[x-1][y]==1&&visited[x-1][y]==false){
+    //         DFS(x-1,y,result+1);
+    //     }
+    //     //왼쪽
+    //     if(y>0&&maze[x][y-1]==1&&visited[x][y-1]==false){
+    //         DFS(x,y-1,result+1);
+    //     }
+    //     System.out.println("x"+x);
+    //     System.out.println("y"+y);
+
+    //     //오른쪽
+    //     if(y<M-1&&maze[x][y+1]==1&&visited[x][y+1]==false){
+    //         DFS(x,y+1,result+1);
+    //     }
+    //     //아래
+    //     if(x<N-1&&maze[x+1][y]==1&&visited[x+1][y]==false){
+    //         DFS(x+1,y,result+1);
+    //     }
+    // }
   
     
         
