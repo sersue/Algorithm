@@ -6,6 +6,7 @@ public class graph_2667 {
     static int [] dx = {-1,0,1,0};
     static int [] dy = {0,-1,0,1};
     static Map<Integer,Integer> result;
+    static ArrayList al = new ArrayList();
     public static void main(String[]args){
 
         Scanner sc = new Scanner(System.in);
@@ -24,29 +25,35 @@ public class graph_2667 {
                 visited[i][j]=false;
             }
         }
+        for(int i=0;i<N;i++)
+        for(int j=0;j<N;j++) 
+            if(town[i][j] == 1 && visited[i][j] == false) {
+                BFS(i,j);
+               
+            }
 
-        BFS();
+     
+        System.out.println(al.size());
+        Collections.sort(al);
+
         
-        System.out.println(result);
+        for(int i=0;i<al.size();i++){
+            System.out.println(al.get(i));
+
+        }
+
+        
         
     }
 
-    public static void BFS(){
+    public static void BFS(int i,int j){
 
         Queue<dot> queue = new LinkedList<dot>();
-        int re=0;
-        int value=0;
+        int re=1;
+        int value=1;
+        visited[i][j]=true;        
+        queue.add(new dot(i,j));
 
-        for(int i=0;i<N;i++){
-            for(int j=0;j<N;j++){
-
-                // visited[i][j]=true;
-
-                if(town[i][j]==0&&visited[i][j]==true){
-                    continue;
-                }
-                
-                queue.add(new dot(i,j));
                 while(!queue.isEmpty()){
                     
                     dot d = queue.poll();
@@ -63,18 +70,21 @@ public class graph_2667 {
                         }
                         queue.add(new dot(nextX,nextY));
                         visited[nextX][nextY]=true;
-                        value ++;
+                        value++;
+
                         }
                     }
-                    result.put(re,value);
-                    re++;
+                    
+                    al.add(value);
                 
             }
-        }
+            
+
+        
     }
 
     
-}
+
 
 class dot{
     int x, y;
