@@ -64,15 +64,33 @@ public class graph_7576 {
                     if(box[nextX][nextY]==0){
                         box[nextX][nextY]=1;
                         queue.add(new DOT(nextX,nextY,day+1));
-                        result++;
+                       
                     }
                 }
                 }
 
                
             }
-            System.out.println(result);
 
+            if(checkBox()){
+                System.out.println(day);
+            }
+            else
+                System.out.println(-1);
+            
+            
+
+        }
+
+        private static boolean checkBox() {
+            for(int i=0;i<N;i++){
+                for(int j=0;j<M;j++){
+                    if(box[i][j]==0){
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
     }
 
