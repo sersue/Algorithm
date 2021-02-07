@@ -41,6 +41,8 @@ public class graph_7576 {
             for (int j=0;j<M;j++){
                 if(box[i][j]==1){
                     queue.add(new DOT(i,j,0));
+                    // DOT a = new DOT(i,j,0);
+                    // System.out.println(a);
                 }
             }
         }
@@ -67,6 +69,16 @@ public class graph_7576 {
                        
                     }
                 }
+
+                // for(int k=0;k<N;k++){
+                //     for(int l=0;l<M;l++){
+                //         System.out.print(box[k][l]);
+
+                //     }
+                //     System.out.println();
+                // }
+                // System.out.println();
+
                 }
 
                
