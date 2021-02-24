@@ -26,6 +26,7 @@ public class math_1978 {
             return true;
         }
         
+        //시간 복잡도 O(루트n)으로 가장 효율적인 방법 
         for(int j=2; j*j<=n;j++){
             if(n%j == 0){
                 return false;
