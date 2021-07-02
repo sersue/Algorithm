@@ -1,12 +1,14 @@
-S = input()
-T = input()
+S = list(map(str,input()))
+T = list(map(str,input()))
 
-can = 1
-cannot =0
-if S==T[0:len(S)]:
-    if T[len(S)]=='B':
-        print(can)
-    else:
-        print(cannot)
-else: 
-    S+''
+while len(T)!=len(S):
+    if T[-1]=='A':
+        T.pop()
+    elif T[-1]=='B':
+        T.pop()
+        T.reverse()
+
+if S==T:
+    print(1)
+else:
+    print(0)
