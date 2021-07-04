@@ -1,40 +1,30 @@
 n = int(input())
-arr=[]
+words=[]
 for i in range(n):
-    arr.append(list(map(str,input())))
+    words.append(input())
 
-#길이순+ 역순으로 정렬
-arr.sort(key=len)
-arr.reverse()
-
-num =9
+#딕셔너리 사용
 isused={}
+for word in words:
+    k=len(word)-1
+    for j in word:
+        if j in isused:
+            isused[j]+=pow(10,k)
+        else:
+            isused[j]=pow(10,k)
+        k-=1
 
-for i in range(n):
-    for j in range(len(arr[i])):
-        if arr[i][j] in isused:
-            arr[i][j]=isused[arr[i][j]]
-            continue
-        if j == len(arr[i+1])-1:
-            arr[i+1][0]=num
-            num-=1
-            arr[i][j]=num
-            break
-        isused[arr[i][j]]=num
-        arr[i][j]=num
-        num-=1
+print(isused) 
+nums=[]
+for value in isused.values():
+    nums.append(value)
 
-        
+nums.sort(reverse=True)
+print(nums)
 
-result=0
-semi =''
-for i in range(n):
-    for j in range(len(arr[i])):
-        arr[i][j]=str(arr[i][j])
-
-for i in range(n):
-    semi = ''.join(arr[i])
-    result+=int(semi)
+result,t = 0,9
+for i in range(len(nums)):
+    result+=nums[i]*t 
+    t-=1
 print(result)
-
     
