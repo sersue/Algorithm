@@ -49,7 +49,6 @@ for value in isused.values():
 
 #내림차순 * 9,8,7...
 nums.sort(reverse=True)
-print(nums)
 
 result,t = 0,9
 for i in range(len(nums)):
