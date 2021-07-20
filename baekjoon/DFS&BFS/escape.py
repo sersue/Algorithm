@@ -1,6 +1,7 @@
 from collections import deque
 a,b = map(int,input().split())
 graph=[]
+visit=[[0]*a]*b
 for i in range(a):
     graph.append(list(map(int,input())))
 
@@ -10,7 +11,7 @@ dy = [0,0,-1,1]
 def bfs(x,y):
     queue = deque()
     queue.append((x,y))
-
+    visit[x][y]=1
     while queue:
         x,y = queue.popleft()
 
@@ -22,9 +23,12 @@ def bfs(x,y):
                 continue
         
             if graph[nx][ny]==0:
+                continue 
+            if visit[nx][ny] == 1:
                 continue
-
+            
             if graph[nx][ny]==1:
+                visit[nx][ny] = 1
                 queue.append((nx,ny))
                 graph[nx][ny] = graph[x][y]+1
 
@@ -32,3 +36,4 @@ def bfs(x,y):
 
 print(bfs(0,0))
 print(graph)
+print(visit)
